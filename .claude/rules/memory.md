@@ -24,3 +24,11 @@ Há dois tipos de memória, que não devem ser confundidos:
 - Fatos de `feedback` e `project` levam as linhas **Why:** e **How to apply:**.
 - Atualize o fato existente em vez de criar um duplicado. Apague memórias que ficaram falsas.
 - Memória pessoal fica fora do repositório (`~/.claude/`), não em `memory/`.
+
+## Memória por subagente (`.claude/agent-memory/<agente>/`)
+
+- Subagentes com `memory: project` no frontmatter (`code-reviewer`, `security-auditor`)
+  guardam o que aprendem em `.claude/agent-memory/<agente>/MEMORY.md` + um arquivo por fato,
+  no mesmo formato de `memory/`.
+- Use para conhecimento que só interessa àquele especialista (padrões recorrentes de achados,
+  falsos positivos conhecidos). Conhecimento do time inteiro vai para `memory/`.

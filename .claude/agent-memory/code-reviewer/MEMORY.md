@@ -1,0 +1,1 @@
+- [Revisar isolamento de memória](isolamento-de-memoria.md) — toda consulta de memória precisa filtrar por principal.subject

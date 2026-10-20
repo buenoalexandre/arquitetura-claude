@@ -16,7 +16,7 @@
 | Integração | `pytest -m integration` | Composição dos componentes e contrato do provedor (com cliente dublê) |
 | Funcionais | `pytest -m functional` | Contrato HTTP, códigos de erro, propagação do `X-Request-ID` |
 | Segurança | `pytest -m security` | Authn/authz, injeção de prompt, vazamento, memória envenenada |
-| Desempenho | `pytest -m performance` | p95 da nossa camada abaixo de 50 ms; concorrência sem serialização |
+| Desempenho | `pytest -m performance` | p95 da nossa camada abaixo de 100 ms (`PERF_P95_BUDGET_MS`); concorrência sem serialização |
 | Evals offline | `make evals` | Datasets e corretores coerentes |
 | Evals live | `make evals-live` | Qualidade real do modelo, com taxa mínima de aprovação |
 

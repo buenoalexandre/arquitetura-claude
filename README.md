@@ -39,6 +39,7 @@ Para usar o Claude de verdade, defina `APP_LLM__PROVIDER=anthropic` e `ANTHROPIC
 
 ```
 .
+├── ARQUITETURA.md            Mapa de cada arquivo e pasta: o que é, quando usar, exemplo
 ├── CLAUDE.md                 Regras gerais do projeto para o Claude Code (versionado)
 ├── CLAUDE.local.md.example   Modelo de overrides pessoais (o .local.md não é versionado)
 ├── .mcp.json                 Servidores MCP compartilhados pelo time
@@ -50,7 +51,9 @@ Para usar o Claude de verdade, defina `APP_LLM__PROVIDER=anthropic` e `ANTHROPIC
 │   ├── skills/               Capacidades sob demanda (new-ai-project, security-review)
 │   ├── agents/               Subagentes (architect, code-reviewer, security-auditor...)
 │   ├── output-styles/        Estilos de resposta alternativos
-│   └── hooks/                Proteções que sempre rodam (bloqueio de comandos e segredos)
+│   ├── hooks/                Proteções que sempre rodam (pre_tool_use.py, post_tool_use.py)
+│   ├── workflows/            Orquestração multiagente (review-changes.js)
+│   └── agent-memory/         Memória própria de cada subagente (<agente>/MEMORY.md)
 ├── memory/                   Memória do time para o Claude (índice MEMORY.md + fatos)
 ├── config/                   Configuração não secreta por ambiente (base, dev, staging, prod)
 ├── prompts/                  Prompts versionados, políticas e registro central
@@ -84,7 +87,8 @@ Para usar o Claude de verdade, defina `APP_LLM__PROVIDER=anthropic` e `ANTHROPIC
 
 ## Documentação
 
-Comece por [`docs/README.md`](docs/README.md). Para validar se um projeto segue o padrão,
+[`ARQUITETURA.md`](ARQUITETURA.md) descreve cada arquivo e pasta do template: o que é, quando
+usar e um exemplo. Para os guias, comece por [`docs/README.md`](docs/README.md). Para validar se um projeto segue o padrão,
 use o [checklist de validação](docs/checklist/project-validation-checklist.md) e rode
 `python scripts/check_template.py`.
 

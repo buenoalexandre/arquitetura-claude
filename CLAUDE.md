@@ -8,7 +8,8 @@ passar de ~15 linhas, mova o conteúdo para `.claude/rules/`.
 
 API de referência para aplicações com IA (FastAPI + Python 3.11+). O domínio não conhece o
 provedor de LLM. Toda chamada ao modelo passa por guardrails, resiliência, memória,
-auditoria e métricas. A arquitetura está em `docs/architecture/overview.md`.
+auditoria e métricas. A arquitetura está em `docs/architecture/overview.md` e o mapa de cada arquivo e pasta em
+`ARQUITETURA.md`.
 
 ## Comandos
 
@@ -31,7 +32,7 @@ auditoria e métricas. A arquitetura está em `docs/architecture/overview.md`.
 
 - Estilo de código: `.claude/rules/code-style.md`
 - Testes e evals: `.claude/rules/testing.md`
-- Design de API: `.claude/rules/api-conventions.md`
+- Design de API: `.claude/rules/api-design.md`
 - Segurança e dados: `.claude/rules/security.md`
 - Prompts: `.claude/rules/prompts.md`
 - Memória: `.claude/rules/memory.md`

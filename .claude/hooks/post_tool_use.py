@@ -1,4 +1,4 @@
-"""Hook PostToolUse (Edit/Write): formata arquivos Python editados com ruff.
+"""Hook PostToolUse (Edit/Write/MultiEdit): formata arquivos Python editados com ruff.
 
 Nunca bloqueia: se o ruff não estiver instalado, apenas segue em frente.
 """

@@ -26,7 +26,7 @@ resultados de ferramentas) é **não confiável**.
 | LLM02 Divulgação de informação sensível | Vazamento de PII ou de dados de outro usuário | Namespace por usuário, redação de PII, guardrail de saída, auditoria sem conteúdo | `chat_service.py`, `test_sessions_are_isolated_between_users` |
 | LLM03 Cadeia de suprimentos | Dependência ou action comprometida | pip-audit, Dependabot, CodeQL, actions com versão fixa | `security.yml` |
 | LLM04 Envenenamento de dados ou modelo | Memória envenenada com instruções | `MemoryPolicy` bloqueia padrões de injeção | `test_poisoned_memory_is_rejected` |
-| LLM05 Tratamento inadequado da saída | Saída usada como código, SQL ou HTML | A saída é texto; quem consome deve escapar. Saída estruturada validada por schema | `api-conventions.md` |
+| LLM05 Tratamento inadequado da saída | Saída usada como código, SQL ou HTML | A saída é texto; quem consome deve escapar. Saída estruturada validada por schema | `rules/api-design.md` |
 | LLM06 Agência excessiva | Modelo aciona ação destrutiva | Sem ferramentas por padrão; regra de allowlist e confirmação humana | `rules/security.md` |
 | LLM07 Vazamento do prompt de sistema | Extração de instruções internas | Política no prompt + detecção na saída | `test_model_echoing_system_prompt_is_masked` |
 | LLM08 Fragilidades de vetores e embeddings | Recuperação cruzada entre tenants | Filtro obrigatório por namespace no `LongTermStore` | `memory/long_term.py` |

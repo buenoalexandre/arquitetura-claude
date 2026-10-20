@@ -12,10 +12,10 @@ pytestmark = pytest.mark.unit
 HOOKS = Path(__file__).resolve().parents[2] / ".claude" / "hooks"
 
 
-def run_hook(name: str, tool_input: dict[str, object]) -> int:
+def run_hook(name: str, tool_input: dict[str, object], tool_name: str = "Write") -> int:
     result = subprocess.run(  # noqa: S603
         [sys.executable, str(HOOKS / name)],
-        input=json.dumps({"tool_input": tool_input}),
+        input=json.dumps({"tool_name": tool_name, "tool_input": tool_input}),
         capture_output=True,
         text=True,
         check=False,
@@ -36,26 +36,34 @@ def run_hook(name: str, tool_input: dict[str, object]) -> int:
     ],
 )
 def test_dangerous_commands_are_blocked(command: str) -> None:
-    assert run_hook("validate_bash.py", {"command": command}) == 2
+    assert run_hook("pre_tool_use.py", {"command": command}, "Bash") == 2
 
 
 @pytest.mark.parametrize(
     "command", ["git status", "rm -rf ./build", "cat .env.example", "make test", "uv run pytest"]
 )
 def test_safe_commands_are_allowed(command: str) -> None:
-    assert run_hook("validate_bash.py", {"command": command}) == 0
+    assert run_hook("pre_tool_use.py", {"command": command}, "Bash") == 0
 
 
 def test_secret_in_content_is_blocked() -> None:
     fake_key = "sk-ant-" + "a" * 30
-    assert run_hook("block_secrets.py", {"file_path": "x.py", "content": f"KEY='{fake_key}'"}) == 2
+    assert run_hook("pre_tool_use.py", {"file_path": "x.py", "content": f"KEY='{fake_key}'"}) == 2
 
 
 def test_env_file_edit_is_blocked() -> None:
-    assert run_hook("block_secrets.py", {"file_path": "/repo/.env", "content": "A=1"}) == 2
-    assert run_hook("block_secrets.py", {"file_path": "/repo/.env.production"}) == 2
+    assert run_hook("pre_tool_use.py", {"file_path": "/repo/.env", "content": "A=1"}) == 2
+    assert run_hook("pre_tool_use.py", {"file_path": "/repo/.env.production"}) == 2
+
+
+def test_other_tools_are_not_inspected() -> None:
+    assert run_hook("pre_tool_use.py", {"file_path": ".env"}, "Read") == 0
+
+
+def test_post_hook_never_blocks() -> None:
+    assert run_hook("post_tool_use.py", {"file_path": "nao_existe.py"}, "Edit") == 0
 
 
 def test_regular_edit_is_allowed() -> None:
-    assert run_hook("block_secrets.py", {"file_path": ".env.example", "content": "A="}) == 0
-    assert run_hook("block_secrets.py", {"file_path": "a.py", "new_string": "x = 1"}) == 0
+    assert run_hook("pre_tool_use.py", {"file_path": ".env.example", "content": "A="}) == 0
+    assert run_hook("pre_tool_use.py", {"file_path": "a.py", "new_string": "x = 1"}) == 0

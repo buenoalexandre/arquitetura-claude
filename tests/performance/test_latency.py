@@ -6,6 +6,7 @@ FakeProvider. Para carga real ponta a ponta, use Locust ou k6 em homologação
 """
 
 import asyncio
+import os
 import statistics
 import time
 
@@ -20,10 +21,13 @@ from app.llm.fake_provider import FakeProvider
 
 pytestmark = pytest.mark.performance
 
-P95_BUDGET_MS = 50
+# Folga para runners de CI compartilhados; ajuste por ambiente com PERF_P95_BUDGET_MS.
+P95_BUDGET_MS = float(os.environ.get("PERF_P95_BUDGET_MS", "100"))
 
 
 def test_chat_overhead_p95_within_budget(client: TestClient, user_headers: dict[str, str]) -> None:
+    for _ in range(5):  # aquecimento: primeira chamada inclui imports e caches frios
+        client.post("/v1/chat", headers=user_headers, json={"session_id": "w", "message": "oi"})
     durations = []
     for i in range(50):
         started = time.perf_counter()
@@ -37,11 +41,13 @@ def test_chat_overhead_p95_within_budget(client: TestClient, user_headers: dict[
 
 
 async def test_concurrent_sessions(settings: Settings) -> None:
-    service = build_container(settings, FakeProvider(latency_seconds=0.01)).chat_service
+    service = build_container(settings, FakeProvider(latency_seconds=0.05)).chat_service
     principal = Principal("load", Role.USER)
     started = time.perf_counter()
     await asyncio.gather(
         *(service.chat(principal, ChatRequest(session_id=f"s{i}", message="oi")) for i in range(50))
     )
     elapsed = time.perf_counter() - started
-    assert elapsed < 0.5, "chamadas concorrentes não deveriam ser serializadas"
+    # Em série seriam 50 x 50 ms = 2,5 s; exigir menos da metade disso detecta serialização
+    # sem depender da velocidade da máquina.
+    assert elapsed < 1.25, f"chamadas concorrentes parecem serializadas ({elapsed:.2f}s)"

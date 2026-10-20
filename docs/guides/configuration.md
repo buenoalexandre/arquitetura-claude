@@ -27,7 +27,7 @@ sobe com configuração inválida. Para chaves aninhadas, use `__`:
 ## Segredos
 
 - **Nunca** coloque segredos em `config/*.yaml`, no código ou em testes. O hook
-  `block_secrets.py`, o gitleaks e o pre-commit bloqueiam isso.
+  `.claude/hooks/pre_tool_use.py`, o gitleaks e o pre-commit bloqueiam isso.
 - Em produção, injete-os como variáveis de ambiente a partir de um cofre: AWS Secrets
   Manager, GCP Secret Manager, Azure Key Vault, HashiCorp Vault ou os secrets do GitHub
   Environments.

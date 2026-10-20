@@ -5,6 +5,8 @@ relevante (ver [manutenção](guides/maintenance.md)).
 
 ## Arquitetura
 
+- [Mapa da estrutura do template](../ARQUITETURA.md): cada arquivo e pasta, com o que é,
+  quando usar e um exemplo.
 - [Visão geral da arquitetura](architecture/overview.md): camadas, fluxo de uma requisição e
   onde fica cada responsabilidade.
 - [Decisões de arquitetura (ADRs)](architecture/adr/): por que cada escolha foi feita e

@@ -5,6 +5,18 @@ segue [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não publicado]
 
+### Adicionado
+- `ARQUITETURA.md`: mapa de todos os arquivos e pastas, com o que é, quando usar e um exemplo.
+- `.claude/workflows/review-changes.js`: revisão multiagente com verificação adversarial.
+- `.claude/agent-memory/<agente>/`: memória própria dos subagentes `code-reviewer` e
+  `security-auditor` (`memory: project`).
+
+### Alterado
+- Hooks unificados por evento: `pre_tool_use.py` (substitui `validate_bash.py` e
+  `block_secrets.py`) e `post_tool_use.py` (antes `format_python.py`).
+- `.claude/rules/api-conventions.md` renomeado para `api-design.md`.
+- Testes de desempenho com aquecimento e margens que não dependem da velocidade da máquina.
+
 ## [0.1.0] - 2026-10-20
 
 ### Adicionado

@@ -1,0 +1,1 @@
+- [Payloads de injeção](payloads-de-injecao.md) — novos ataques vão para tests/security/injection_payloads.json

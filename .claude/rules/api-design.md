@@ -1,4 +1,4 @@
-# Convenções de API
+# Design de API
 
 - Versão no caminho: `/v1/...`. Mudanças incompatíveis exigem `/v2` e um período de transição
   documentado no `CHANGELOG.md`.

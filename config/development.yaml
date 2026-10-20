@@ -1,0 +1,7 @@
+# Desenvolvimento local: provedor fake, logs legíveis, limites folgados.
+llm:
+  provider: fake
+  requests_per_minute: 600
+observability:
+  log_level: DEBUG
+  log_json: false

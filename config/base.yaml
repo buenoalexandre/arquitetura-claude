@@ -1,0 +1,30 @@
+# Configuração comum a todos os ambientes.
+# Precedência: base.yaml < <APP_ENV>.yaml < variáveis de ambiente (APP_*) < .env
+app_name: ai-app
+llm:
+  provider: fake
+  model: claude-opus-5-5
+  fallback_model: claude-sonnet-5-5
+  max_tokens: 16000
+  effort: medium
+  timeout_seconds: 60
+  max_retries: 3
+  requests_per_minute: 60
+  circuit_breaker:
+    failure_threshold: 5
+    reset_timeout_seconds: 30
+memory:
+  short_term_max_tokens: 8000
+  long_term_ttl_days: 90
+  redact_pii: true
+prompts:
+  directory: prompts
+  registry_file: prompts/registry.yaml
+guardrails:
+  max_input_chars: 20000
+  block_prompt_injection: true
+observability:
+  log_level: INFO
+  log_json: true
+  trace_enabled: true
+  service_name: ai-app

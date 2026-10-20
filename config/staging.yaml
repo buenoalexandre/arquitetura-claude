@@ -1,0 +1,6 @@
+# Homologação: espelha produção com modelo real e limites menores.
+llm:
+  provider: anthropic
+  requests_per_minute: 120
+observability:
+  log_level: INFO

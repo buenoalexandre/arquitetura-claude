@@ -1,0 +1,9 @@
+# Produção: provedor real, logs JSON, retenção mais curta de memória.
+llm:
+  provider: anthropic
+  requests_per_minute: 600
+memory:
+  long_term_ttl_days: 30
+observability:
+  log_level: WARNING
+  log_json: true

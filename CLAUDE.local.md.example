@@ -1,0 +1,8 @@
+# CLAUDE.local.md (pessoal, não versionado)
+
+Copie para `CLAUDE.local.md` e adapte. Use para detalhes da sua máquina que não devem ir
+para o repositório.
+
+- Meu Python fica em `C:\Python311\python.exe`. Use `uv` quando estiver disponível.
+- Banco local de testes: `postgresql://localhost:5432/ai_app_dev`.
+- Prefiro explicações curtas e diffs pequenos.

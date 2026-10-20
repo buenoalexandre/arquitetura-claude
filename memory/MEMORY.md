@@ -1,0 +1,2 @@
+- [Provedor fake por padrão](provedor-fake-por-padrao.md) — dev e CI nunca chamam o modelo real sem a marca live
+- [Prompts imutáveis](prompts-imutaveis.md) — versão publicada não se edita; cria-se vN+1 com evals

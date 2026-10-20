@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Ambiente e segredos — nunca versionar
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Claude Code — configurações pessoais
+CLAUDE.local.md
+.claude/settings.local.json
+*.local.json
+
+# Memória pessoal do Claude (a memória do time fica em memory/, versionada)
+.claude/agent-memory-local/
+
+# IDEs / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Artefatos de avaliação
+tests/evals/reports/

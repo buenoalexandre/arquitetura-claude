@@ -1,0 +1,5 @@
+# Arquivos locais (não versionados) copiados para cada git worktree,
+# permitindo sessões paralelas do Claude Code em branches diferentes.
+.env
+CLAUDE.local.md
+.claude/settings.local.json

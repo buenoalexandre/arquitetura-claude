@@ -1,0 +1,22 @@
+# Registro central de prompts versionados.
+# Regras: nunca editar uma versão publicada — crie v2, v3...; "active" define a versão em uso.
+# Mudança de versão ativa exige PR com resultado de evals (ver docs/ai/prompt-management.md).
+prompts:
+  assistant:
+    active: v1
+    owner: time-ia
+    versions:
+      v1:
+        file: system/assistant.v1.md
+        policies: [policies/behavior.md, policies/safety.md]
+        variables: [product_name]
+        changelog: Versão inicial.
+  summarize:
+    active: v1
+    owner: time-ia
+    versions:
+      v1:
+        file: tasks/summarize.v1.md
+        policies: [policies/safety.md]
+        variables: [max_sentences]
+        changelog: Versão inicial.

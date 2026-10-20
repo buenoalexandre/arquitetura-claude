@@ -1,0 +1,39 @@
+name: Evals (modelo real)
+
+# Roda contra o modelo real, o que custa tokens. Por isso não roda em todo PR: só quando o PR
+# recebe o label "run-evals", quando muda algo em prompts/, sob demanda ou toda noite.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
+  pull_request:
+    types: [labeled, synchronize]
+    paths: ["prompts/**", "tests/evals/**", "src/app/llm/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  live-evals:
+    if: >
+      github.event_name != 'pull_request' ||
+      contains(github.event.pull_request.labels.*.name, 'run-evals')
+    runs-on: ubuntu-latest
+    environment: evals # proteja este environment e guarde o segredo nele
+    env:
+      APP_ENV: test
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      EVAL_MIN_PASS_RATE: "0.9"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --group dev
+      - name: Evals live
+        run: uv run pytest -m live tests/evals -q
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-reports
+          path: tests/evals/reports/

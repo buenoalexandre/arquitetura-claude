@@ -1,0 +1,9 @@
+# Substitua os times pelos da sua organização.
+*                                  @org/time-dev
+/template/prompts/                 @org/time-ia @org/time-dev
+/template/tests/evals/             @org/time-ia
+/template/src/app/core/security.py @org/time-seguranca
+/template/src/app/guardrails/      @org/time-seguranca
+/.github/                          @org/time-plataforma
+/template/.github/                 @org/time-plataforma
+/template/.claude/                 @org/time-dev

@@ -53,6 +53,6 @@ O hook `commit-msg` do pre-commit e o job `commits` do CI validam o formato.
 ## Repositório remoto deste template
 
 ```bash
-git remote add origin git@github.com:buenoalexandre/template-ia.git
+git remote add origin git@github.com:buenoalexandre/arquitetura-claude.git
 git push -u origin main
 ```

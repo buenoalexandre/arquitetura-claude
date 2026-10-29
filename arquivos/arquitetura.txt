@@ -1,0 +1,25 @@
+CLAUDE.MD -> especificação de regras gerais e memória entre sessões
+.mcp.json -> arquivo para salvar todos os mcp serves referente ao projeto atual que o claude está trabalhando é a maneira de conectar a LLM a ferramentas de terceiros
+.worktreeinclude -> arquivo para trabalhar com duas sessões distintas onde arquivos conseguem trabalhar em sessões separadas
+
+claude/
+	settings.json > onde pode deixar algumas permissões
+	settings.local.json -> pode fazer o over hide de diversas permissões
+
+rules/ 
+	testing.md -> regras especificas para determinada (ex: se
+	api-design.md ->
+
+skills/
+	security-review/
+		SKILL.md
+		checklist.md
+	fix-issue/ -> skill manual (/fix-issue), com disable-model-invocation: true
+		SKILL.md
+
+output-styles/
+	code-reviewer.md
+
+agent-memory
+	<agent-name>
+	MEMORY.md

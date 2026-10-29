@@ -1,0 +1,62 @@
+Recursos do Claude — Guia de Referência
+
+---
+Projetos
+
+Espaço persistente com memória de contexto compartilhada entre conversas. Ideal para times ou trabalhos recorrentes onde o Claude precisa conhecer o contexto da empresa, stack técnica, convenções de código e fluxos de trabalho.
+
+---
+Conversas (Chats)
+
+Sessões individuais sem memória entre si. Ideal para tarefas pontuais e independentes. O contexto dura enquanto a conversa está ativa.
+
+---
+Memória (Memory)
+
+Fatos persistentes sobre o usuário carregados automaticamente em todas as conversas. Ideal para preferências pessoais, estilolizadas e informações recorrentes.
+
+---
+Artefatos
+
+Blocos de conteúdo renderizável gerados dentro da conversa — código, HTML, SVG, React, Markdown. Ficam em painel separado e podem ser editados iterativamente sem poluir o chat.
+
+---
+Claude Code (CLI)
+
+Agente de terminal que lê, edita e executa código diretamente no repositório local. Ideal para tarefas de engenharia: debug, code review e automação de tarefas de desenvolvimento.
+
+---
+Claude Cowork
+
+Ambiente colaborativo onde múltiplos usuários participam da mesma conversa simultaneamente. Ideal para times que precisam tomar decisões juntos, revisar documentos em grupo ou conduzir sessões de trabalho sem precisar copiar e colar respostas entre pessoas.
+
+---
+Claude Design
+
+Modo focado em criação visual dentro do Claude.ai. Permite gerar e iterar sobre layouts, mockups, interfaces e elementos visuIdeal para designers e desenvolvedores que querem explorar ideias visuais rapidamente sem sair da plataforma.
+
+---
+Análise de Arquivos
+
+Leitura e análise de PDFs, CSVs, imagens e planilhas enviados na conversa. Ideal para extrair insights, responder perguntas sobre documentos específicos e processar dados sem precisar de ferramentas externas.
+
+---
+Estilos de Resposta / Instruções de Sistema
+
+Configurações que moldam o tom, formato e comportamento das respostas do Claude. Ideal para adaptar o assistente a casos de uo cliente, redação técnica ou tutoria.
+
+---
+Plugins
+
+Extensões que adicionam capacidades externas ao Claude, permitindo que ele acesse ferramentas e serviços de terceiros durante a conversa. Funcionam como integrações sob demanda — o Claude decide quando acionar cada plugin conforme a necessidade da tarefa. Ideal para expandir o que
+o Claude consegue fazer sem sair da interface.
+
+---
+Skills
+
+Instruções especializadas pré-configuradas que ensinam o Claude a executar tipos específicos de tarefas com maior precisão e contexto. Funcionam como "modos de especialista" ativáveis — por exemplo, uma skill de arquitetura de software, de engenharia de prompts ou de revisão de
+segurança. Ideal para padronizar como o Claude aborda domínios recorrentes dentro de um projeto ou time.
+
+---
+Conectores                                                                                                                                                                                                                                                                              
+Integrações diretas com fontes de dados externas — como Google Drive, Notion, GitHub, Slack, entre outros — que permitem ao Claude ler e referenciar conteúdos dessas plataformas dentro da conversa. Ideal para times que precisam que o Claude trabalhe com documentos e dados que já existem nas ferramentas que utilizam no dia a dia.

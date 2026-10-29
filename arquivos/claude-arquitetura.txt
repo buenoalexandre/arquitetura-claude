@@ -1,0 +1,30 @@
+A estrutura recomendada:
+
+C:\Users\Alexandre Bueno\.claude\
+├── settings.json          ← configurações globais + MCP servers (plugins)
+├── skills\                ← skills globais (inclui os antigos slash commands)
+│   ├── minha-skill\
+│   │   └── SKILL.md
+│   └── outra-skill\
+│       └── SKILL.md
+└── memory\                ← memórias persistentes (já existe)
+
+Skills: ficam em ~/.claude/skills/<nome>/SKILL.md e ficam disponíveis como /minha-skill em qualquer projeto. As que têm disable-model-invocation: true só rodam quando você digita /nome; as sem essa flag o Claude carrega sozinho conforme o contexto.
+
+Plugins (MCP servers): ficam configurados no ~/.claude/settings.json na chave mcpServers, e também são globais.
+
+Comparando com a alternativa local (.claude/ dentro do projeto), que só funciona para aquele projeto específico — o global em ~/.claude é o lugar certo para tudo que você quer reutilizar entre projetos.
+
+
+===================================================================================================================
+
+Resultado:
+- As 3 skills movidas para ~/.claude/commands/ — agora disponíveis em qualquer projeto
+- Caminhos dos scripts e referências atualizados para paths absolutos (~/.claude/commands/skill-name/...)
+- Diretório antigo projetos-claude/.claude/skills/ removido
+- Invocação por gatilho preservada via frontmatter description com "Use when..." em cada arquivo
+
+Como usar em qualquer projeto:
+- /senior-architect — arquitetura, diagramas, decisões técnicas
+- /senior-prompt-engineer — otimização de LLMs, sistemas agênticos, RAG
+- /senior-security — threat modeling, pentest, auditoria de segurança

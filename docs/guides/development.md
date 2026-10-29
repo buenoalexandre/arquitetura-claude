@@ -14,8 +14,8 @@
 |---|---|---|
 | `CLAUDE.md` | raiz | Carregado sempre: visão geral e "Padrões que NÃO usamos" |
 | Regras | `.claude/rules/` | Convenções detalhadas por domínio |
-| Comandos | `.claude/commands/` | Você chama: `/review`, `/fix-issue 42`, `/new-prompt`, `/run-evals`, `/adr` |
-| Skills | `.claude/skills/` | O Claude carrega quando o assunto aparece: `new-ai-project`, `security-review` |
+| Skills manuais | `.claude/skills/` | Você chama: `/review`, `/fix-issue 42`, `/new-prompt`, `/run-evals`, `/adr` (têm `disable-model-invocation: true`) |
+| Skills automáticas | `.claude/skills/` | O Claude carrega quando o assunto aparece: `new-ai-project`, `security-review` (sem a flag) |
 | Subagentes | `.claude/agents/` | Tarefas com contexto isolado: `architect`, `code-reviewer`, `security-auditor`, `prompt-engineer`, `performance-optimizer` |
 | Hooks | `.claude/hooks/` | Proteções que sempre rodam: bloqueiam comandos perigosos e segredos, formatam Python |
 | MCP | `.mcp.json` | Integrações compartilhadas (GitHub, documentação) |

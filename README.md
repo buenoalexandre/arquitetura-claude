@@ -47,8 +47,7 @@ Para usar o Claude de verdade, defina `APP_LLM__PROVIDER=anthropic` e `ANTHROPIC
 ├── .claude/                  Configuração do Claude Code
 │   ├── settings.json         Permissões e hooks do time
 │   ├── rules/                Regras por domínio (estilo, testes, API, segurança, prompts...)
-│   ├── commands/             Slash commands (/review, /fix-issue, /run-evals, /adr...)
-│   ├── skills/               Capacidades sob demanda (new-ai-project, security-review)
+│   ├── skills/               Skills manuais (/review, /fix-issue, /run-evals, /adr...) e automáticas (new-ai-project, security-review)
 │   ├── agents/               Subagentes (architect, code-reviewer, security-auditor...)
 │   ├── output-styles/        Estilos de resposta alternativos
 │   ├── hooks/                Proteções que sempre rodam (pre_tool_use.py, post_tool_use.py)

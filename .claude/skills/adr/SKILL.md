@@ -1,6 +1,8 @@
 ---
+name: adr
 description: Registra uma decisão de arquitetura (ADR)
 argument-hint: "<título da decisão>"
+disable-model-invocation: true
 ---
 
 Crie um ADR para: $ARGUMENTS

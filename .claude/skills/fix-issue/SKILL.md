@@ -1,6 +1,8 @@
 ---
+name: fix-issue
 description: Corrige uma issue com teste de regressão e causa raiz documentada
 argument-hint: "<número da issue>"
+disable-model-invocation: true
 ---
 
 Corrija a issue #$ARGUMENTS como um engenheiro sênior de debugging:

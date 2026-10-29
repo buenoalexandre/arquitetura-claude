@@ -31,7 +31,7 @@ REQUIRED_FILES = [
     ".claude/rules/testing.md",
     ".claude/rules/api-design.md",
     ".claude/skills/security-review/SKILL.md",
-    ".claude/commands/fix-issue.md",
+    ".claude/skills/fix-issue/SKILL.md",
     ".claude/agents/code-reviewer.md",
     ".claude/output-styles/code-reviewer.md",
     ".claude/workflows/review-changes.js",
@@ -52,7 +52,7 @@ REQUIRED_FILES = [
     "docs/checklist/project-validation-checklist.md",
 ]
 
-REQUIRED_DIRS = [".claude/rules", ".claude/agents", ".claude/commands", "docs/architecture/adr"]
+REQUIRED_DIRS = [".claude/rules", ".claude/agents", ".claude/skills","docs/architecture/adr"]
 GITIGNORE_ENTRIES = [".env", "CLAUDE.local.md", ".claude/settings.local.json"]
 
 Check = Callable[[Path], list[str]]

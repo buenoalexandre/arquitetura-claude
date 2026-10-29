@@ -1,6 +1,8 @@
 ---
+name: review
 description: Revisa as mudanças atuais (ou um PR) procurando bugs, riscos de IA e desvios de padrão
 argument-hint: "[número do PR ou branch]"
+disable-model-invocation: true
 ---
 
 Revise as mudanças de $ARGUMENTS (se vazio, use `git diff main...HEAD`).

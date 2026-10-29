@@ -1,6 +1,8 @@
 ---
+name: run-evals
 description: Roda os evals de qualidade e resume regressões
 argument-hint: "[offline|live]"
+disable-model-invocation: true
 ---
 
 Rode os evals no modo `$ARGUMENTS` (padrão: offline).

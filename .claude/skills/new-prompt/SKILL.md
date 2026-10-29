@@ -1,6 +1,8 @@
 ---
+name: new-prompt
 description: Cria uma nova versão de prompt seguindo o processo de versionamento
 argument-hint: "<nome-do-prompt> <objetivo da mudança>"
+disable-model-invocation: true
 ---
 
 Crie uma nova versão do prompt descrito em: $ARGUMENTS

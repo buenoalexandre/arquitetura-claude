@@ -43,16 +43,14 @@ projeto/
 │   │   ├── security-review/
 │   │   │   ├── SKILL.md
 │   │   │   └── checklist.md
-│   │   └── new-ai-project/
-│   │       ├── SKILL.md
-│   │       └── checklist.md
-│   │
-│   ├── commands/                 # slash commands customizados
-│   │   ├── fix-issue.md
-│   │   ├── review.md
-│   │   ├── new-prompt.md
-│   │   ├── run-evals.md
-│   │   └── adr.md
+│   │   ├── new-ai-project/
+│   │   │   ├── SKILL.md
+│   │   │   └── checklist.md
+│   │   ├── fix-issue/SKILL.md    # skills manuais (/nome), com disable-model-invocation
+│   │   ├── review/SKILL.md
+│   │   ├── new-prompt/SKILL.md
+│   │   ├── run-evals/SKILL.md
+│   │   └── adr/SKILL.md
 │   │
 │   ├── agents/                   # definições de subagentes especializados
 │   │   ├── code-reviewer.md
@@ -393,12 +391,13 @@ Ao revisar mudanças de segurança, siga o checklist em `checklist.md` e reporte
 severidade.
 ```
 
-### `commands/`
-**O que é:** **slash commands** customizados: atalhos que o usuário digita (`/fix-issue 42`) para
-disparar um prompt ou fluxo pré-definido. `$ARGUMENTS` recebe o que vem depois do comando.
+#### Skills acionadas manualmente (antigos slash commands)
+**O que é:** skills com `disable-model-invocation: true` no frontmatter: atalhos que o usuário
+digita (`/fix-issue 42`) para disparar um prompt ou fluxo pré-definido. `$ARGUMENTS` recebe o que
+vem depois do comando. Elas substituem a antiga pasta `commands/`.
 
-**Quando usar:** para ações que o usuário aciona manualmente e com frequência. Skills, ao
-contrário, são descobertas automaticamente pelo Claude conforme o contexto.
+**Quando usar:** para ações que o usuário aciona manualmente e com frequência. As skills sem essa
+flag, ao contrário, o Claude carrega sozinho conforme o contexto.
 
 | Comando | Ação |
 |---|---|
@@ -408,11 +407,13 @@ contrário, são descobertas automaticamente pelo Claude conforme o contexto.
 | `/run-evals [offline\|live]` | Roda os evals e resume regressões |
 | `/adr <título>` | Registra uma decisão de arquitetura |
 
-**Exemplo — `commands/fix-issue.md`:**
+**Exemplo — `skills/fix-issue/SKILL.md`:**
 ```markdown
 ---
+name: fix-issue
 description: Corrige uma issue com teste de regressão e causa raiz documentada
 argument-hint: "<número da issue>"
+disable-model-invocation: true
 ---
 
 Corrija a issue #$ARGUMENTS: leia a issue, reproduza o bug, escreva um teste que falhe,
@@ -812,18 +813,18 @@ segurança, CI), checklist de PR com itens de IA e modelos de bug e de funcional
 ## Boas práticas
 
 - **O que versionar vs. manter local:** `CLAUDE.md`, `settings.json`, `rules/`, `skills/`,
-  `commands/`, `agents/`, `hooks/`, `workflows/`, `memory/` e `agent-memory/` vão para o git (são
+  `agents/`, `hooks/`, `workflows/`, `memory/` e `agent-memory/` vão para o git (são
   conhecimento do time). `CLAUDE.local.md`, `settings.local.json`, `.env` e memórias pessoais
   (`~/.claude/`) ficam fora do controle de versão.
 - **Convenção de nomes:** kebab-case em arquivos e slugs de Markdown (`security-review`,
   `fix-issue`, `api-design`) e snake_case em Python (`pre_tool_use.py`, `chat_service.py`).
 - **`CLAUDE.md` enxuto:** ele deve **referenciar** `rules/*.md` em vez de duplicar o conteúdo, e
   manter a seção "Padrões que NÃO usamos".
-- **`skills/` vs. `commands/` vs. `agents/` vs. `workflows/`:**
+- **`skills/` vs. `agents/` vs. `workflows/`:**
   - **skills** → descobertas automaticamente pelo Claude quando a tarefa casa com a descrição;
     ideais para processos complexos e reutilizáveis.
-  - **commands** → disparados manualmente pelo usuário com `/nome`; ideais para ações pontuais e
-    frequentes.
+  - **skills com `disable-model-invocation: true`** (antigos `commands/`) → disparadas
+    manualmente pelo usuário com `/nome`; ideais para ações pontuais e frequentes.
   - **agents** → subagentes com prompt e ferramentas próprios, usados para delegar partes de uma
     tarefa maior com contexto isolado.
   - **workflows** → orquestram vários agentes de forma determinística; usados só quando o

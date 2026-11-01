@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 # Build multi-stage: dependências resolvidas com uv; imagem final mínima e sem root.
-FROM python:3.12-slim AS builder
+FROM python:3.15-slim AS builder
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 WORKDIR /app
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
@@ -8,7 +8,7 @@ COPY pyproject.toml README.md ./
 COPY src ./src
 RUN uv sync --no-dev
 
-FROM python:3.12-slim AS runtime
+FROM python:3.15-slim AS runtime
 RUN useradd --create-home --uid 10001 app
 WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
